@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stjohnjohnson/mqtt-dasher.git"
+    "url": "https://github.com/m3ki/mqtt-dasher.git"
   },
   "keywords": [
     "mqtt",
@@ -16,12 +16,12 @@
     "amazon",
     "arp"
   ],
-  "author": "St. John Johnson <st.john.johnson@gmail.com>",
+  "author": "Igor Mekhtiev <imehdi@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/stjohnjohnson/mqtt-dasher/issues"
+    "url": "https://github.com/m3ki/mqtt-dasher/issues"
   },
-  "homepage": "https://github.com/stjohnjohnson/mqtt-dasher",
+  "homepage": "https://github.com/m3ki/mqtt-dasher",
   "dependencies": {
     "async": "^2.0.0",
     "js-yaml": "^3.6.1",

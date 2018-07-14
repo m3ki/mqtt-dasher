@@ -1,7 +1,13 @@
 # MQTT Dasher
+*** Forked from ***
+https://github.com/stjohnjohnson/mqtt-dasher
 ***Emits events to MQTT when an Amazon Dash button is pressed.***
 
 [![GitHub tag](https://img.shields.io/github/tag/stjohnjohnson/mqtt-dasher.svg)](https://github.com/stjohnjohnson/mqtt-dasher/releases)
+
+#Docker Configuration
+TODO
+
 
 # Configuration
 
