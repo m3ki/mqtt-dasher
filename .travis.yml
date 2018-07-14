@@ -9,8 +9,8 @@ env:
     - secret: "<something long>"
 
 before_script:
-  - version="$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g')"
-  # - print $version
+  - version=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' package.json)
+  - print $version
   - docker pull "$IMAGE_NAME" || true
 script:
   - docker build --pull --cache-from "$IMAGE_NAME" --tag "$IMAGE_NAME" .
