@@ -9,7 +9,7 @@ env:
     - secret: "<something long>"
 
 before_script:
-  - version=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' package.json)
+  # - version=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' package.json)
   - print $version
   - docker pull "$IMAGE_NAME" || true
 script:
