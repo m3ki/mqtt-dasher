@@ -20,6 +20,6 @@ before_deploy:
 - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${version}"
 deploy:
   provider: script
-  script: bash docker_push
+  script: docker push "$IMAGE_NAME"
   on:
     branch: master
