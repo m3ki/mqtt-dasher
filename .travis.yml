@@ -1,4 +1,5 @@
 sudo: required
+language: bash
 services:
   - docker
 env:
@@ -9,7 +10,7 @@ env:
     - secret: "<something long>"
 
 before_script:
-  - version="$(sed -nE 's/^\s*\"version\": \"(.*?)\",$/\1/p' package.json)"
+  - version="$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
   - print $version
   - docker pull "$IMAGE_NAME" || true
 script:
