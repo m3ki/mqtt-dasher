@@ -10,7 +10,7 @@ env:
     - secret: "<something long>"
 
 before_script:
-  - version="$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')"
+  - version=`./get-package-ver.sh`
   - print $version
   - docker pull "$IMAGE_NAME" || true
 script:
