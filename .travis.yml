@@ -1,31 +1,17 @@
 sudo: required
 language: bash
 services:
-  - docker
+- docker
 env:
-  global:
-    - IMAGE_NAME=m3ki/mqtt-dasher
-    - REGISTRY_USER=m3ki
-    # REGISTRY_PASS=...
-    - secret: "<something long>"
-
+  secure: oN5IbAlf2kDOvRsbBJubVFHKLvPs30FInvkwaLXy1OH4MKZIYo+dyuRZGB4LmuMsRjaQkHlVx2zm3Hfc/e1htn57xg27e65+Mb+Gb6FqGwHl3jattXQeadfvxMXH5NVZuYAfRwImS4yeILREaUtWCE4RwQWdvJqBQ6dc+OByA7AlJovq3GCF8Ify6JOaF9GsnRECvkLsvD/u6HIqt0xULR1MYGZjJUuEk6R54p9VqsnlMw6XMzwfNkoW33FyoALJEes1UaM/OJOxsc/Q3/8TGL6Mk0DTvfeLBhuK4B0C9oFZwkdSOo4DgLcbQeiTyKsvHPgjkPofxsvpvZdSLXU9luQXBdd+4q+3ajgvo3EWJfZL2fhvysWyC5CanF2oeTZ2CVOtFwPMDonimxY7Ok3txVtDObBla8lOKfvy5FeBqKgMl76YA0HIIG87YD/iQwwk5afiPukrUKZtDkGchE0KtM2z/RrDZGHE6L2vsnpt6c92L/jjYj65Sd1hRUkfIun2f6WTV8n0/wpcfsSG0+tP7OhMCBIwxzxlTJ/yah3jWzvbBXtoot2EpkqlP8aMMx46K0AUCgGqjwQg4WoSdhUcyDOWTVAQUxfuzSZGH8a9wZf+0+iiF7rWUpqZ3Qu1wj4s1saUw8vgORmfjYnbS66HQmbQ37ev+oYHgOlABmqU7yA=
 before_install:
-  - version=`./get-package-ver.sh`
-  - echo $version
-  - docker build -t "$IMAGE_NAME" .
-  # - docker run -d -p 127.0.0.1:80:4567 carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec foreman start;"
-  - docker ps -a
-  # - docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test"
-
+- version=`./get-package-ver.sh`
+- echo $version
+- docker build -t "$IMAGE_NAME" .
+- docker ps -a
+before_deploy:
+- docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+- docker tag "$IMAGE_NAME" "${IMAGE_NAME}:latest"
+- docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${version}"
 after_script:
-  - docker images
-
-# before_deploy:
-#   - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
-#   - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:latest"
-#   - docker tag "$IMAGE_NAME" "${IMAGE_NAME}:${version}"
-# deploy:
-#   provider: script
-#   script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}:${version}"
-#   on:
-#     branch: master
+- docker images
