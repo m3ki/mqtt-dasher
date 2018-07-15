@@ -1,10 +1,8 @@
-FROM ubuntu
-#node:alpine
+FROM node:alpine
+
 MAINTAINER Igor Mekhtiev <imehdi@gmail.com>
 
-#RUN apk add --no-cache \
-RUN apt-get update
-RUN apt-get install git python make g++ libpcap-dev nodejs npm -y
+RUN apk add --no-cache git python make g++ libpcap-dev
 
 
 # Create our application direcory
