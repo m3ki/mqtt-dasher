@@ -1,9 +1,14 @@
 # MQTT Dasher
-*** Forked from ***
+_This project was forked from:_
 https://github.com/stjohnjohnson/mqtt-dasher
+
+_I am adapting it for my own user with docker and ansible._
+
+# Description 
 ***Emits events to MQTT when an Amazon Dash button is pressed.***
 
-[![GitHub tag](https://img.shields.io/github/tag/stjohnjohnson/mqtt-dasher.svg)](https://github.com/stjohnjohnson/mqtt-dasher/releases)
+[![GitHub tag](https://img.shields.io/github/tag/m3ki/mqtt-dasher.svg)](https://github.com/stjohnjohnson/mqtt-dasher/releases)
+[![Build Status](https://travis-ci.org/m3ki/mqtt-dasher.svg?branch=master)](https://travis-ci.org/m3ki/mqtt-dasher)
 
 #Docker Configuration
 TODO
@@ -28,6 +33,7 @@ TODO
 The dash bridge has one yaml file for configuration:
 
 ```
+
 ---
 mqtt:
     # Specify your MQTT Broker's hostname or IP address here
@@ -49,34 +55,4 @@ buttons:
 
 ```
 
-# Usage
-
-_note: follow [this setup](https://github.com/hortinstein/node-dash-button#installation-instructions) first
-
-1. Install the Node module globally
-
-    ```
-    $ npm install -g mqtt-dasher
-    ```
-
-2. Configure your buttons
-
-    ```
-    $ mkdir -p /opt/mqtt-dasher
-    $ cp _config.yml /opt/mqtt-dasher/config.yml
-    $ vi /opt/mqtt-dasher/config.yml
-    ```
-
-3. Add systemd unit for the service
-
-    ```
-    $ cp mqtt-dasher.service /etc/systemd/system
-    ```
-
-4. Run the server
-
-    ```
-    $ systemctl start mqtt-dasher.service
-    ```
-
-5. Configured dash events now feed into MQTT
+# The underlying code makes use of this [this library](https://github.com/hortinstein/node-dash-button#installation-instructions).
