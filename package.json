@@ -1,6 +1,6 @@
 {
   "name": "mqtt-dasher",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Notifies MQTT when an Amazon Dash button is pressed",
   "main": "server.js",
   "bin": {
